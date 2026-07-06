@@ -1,0 +1,4 @@
+# SWE-bench evaluation harness (installs the `swebench.harness.run_evaluation` module).
+# This is all you need to RUN evaluations — you do NOT need to clone the SWE-bench repo.
+# Tip: pin a version for full reproducibility across machines, e.g. swebench==4.0.4
+swebench

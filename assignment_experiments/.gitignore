@@ -1,0 +1,11 @@
+# Local virtual environment (recreate per machine)
+.venv/
+
+# Harness output
+logs/
+gold.*.json
+*.log
+
+# Python cruft
+__pycache__/
+*.pyc
