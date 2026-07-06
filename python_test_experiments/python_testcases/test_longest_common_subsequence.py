@@ -1,5 +1,5 @@
 import pytest
-from load_testdata import load_json_testcases
+from python_testcases.load_testdata import load_json_testcases
 
 from python_programs.longest_common_subsequence import longest_common_subsequence
 
