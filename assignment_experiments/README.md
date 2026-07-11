@@ -41,6 +41,7 @@ different Docker build environments. See [How difficulty was chosen](#how-diffic
 | `predictions/hard.jsonl` | Prediction (gold patch) for the hard instance. |
 | `run_experiment.ps1` | Runner for Windows (PowerShell). |
 | `run_experiment.sh` | Runner for macOS / Linux (bash). |
+| `run_all.sh` | macOS + Colima one-shot wrapper (starts Colima, sets `DOCKER_HOST`, runs levels). |
 | `.gitignore` | Ignores `.venv/`, `logs/`, and report `*.json`. |
 
 Each `predictions/*.jsonl` file has one line in the standard SWE-bench format:
@@ -117,6 +118,40 @@ when running — but activating it is the simplest mental model.
 ./run_experiment.sh all 3         # all three, 3 workers
 ./run_experiment.sh hard 2 --local
 ```
+
+### macOS + Colima one-shot wrapper (recommended on Apple Silicon)
+
+`run_all.sh` wraps the whole flow so you don't have to remember the Colima steps. It:
+
+1. Starts the Colima Docker VM if it isn't already running.
+2. Points `DOCKER_HOST` at Colima's socket (the `swebench` Python SDK needs this —
+   without it you get a `FileNotFoundError` on `/var/run/docker.sock`).
+3. Activates the local `.venv`.
+4. Runs `run_experiment.sh` with `--local`.
+
+```bash
+./run_all.sh                    # all three levels (2 workers), builds images locally
+./run_all.sh easy               # just easy
+./run_all.sh medium             # just medium
+./run_all.sh hard               # just hard
+./run_all.sh all 3              # all three, 3 workers
+./run_all.sh easy 2 --no-local  # Intel Mac: pull prebuilt x86_64 images instead of building
+./run_all.sh --help             # show all options
+```
+
+Options:
+
+| Option | Default | Meaning |
+|--------|:-------:|---------|
+| `LEVEL` (1st positional) | `all` | `easy` \| `medium` \| `hard` \| `all` |
+| `WORKERS` (2nd positional) | `2` | Max parallel workers |
+| `--no-local` | off | Skip `--local` (pull prebuilt images; Intel Macs only) |
+| `--cpu N` | `8` | CPUs to give Colima **when it starts it** |
+| `--memory N` | `12` | Memory (GiB) for Colima on start |
+| `--disk N` | `100` | Disk (GiB) for Colima on start |
+
+> The `--cpu` / `--memory` / `--disk` flags only apply the first time Colima is started;
+> if Colima is already running they're ignored (stop it with `colima stop` to resize).
 
 ### Or call the harness directly
 
