@@ -39,7 +39,7 @@ import sys
 from pathlib import Path
 
 HARNESS_DIR = Path(__file__).resolve().parent
-ASSIGN_DIR = HARNESS_DIR.parent  # the assignment_experiments/ folder
+ASSIGN_DIR = HARNESS_DIR.parent  # the SWE-bench_experiments/ folder
 
 DEFAULT_RESULTS_DIR = Path(
     "/Users/tasosvaf/repos/testRepos/experiment_results/SWE-bench_results"
@@ -412,7 +412,7 @@ def _write_top_readme(results_dir: Path):
         "",
         "Auto-generated. Each subfolder is one agent/platform; each `run_*` is one",
         "evaluated experiment (easy/medium/hard). See",
-        "`assignment_experiments/harness/README.md` for how to reproduce a run.",
+        "`SWE-bench_experiments/harness/README.md` for how to reproduce a run.",
         "",
         "## Latest run per tool",
         "",

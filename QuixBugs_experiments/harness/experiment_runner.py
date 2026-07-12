@@ -50,7 +50,7 @@ PROGRAMS_DIR = ROOT / "python_programs"
 BASELINE_DIR = HARNESS_DIR / "baseline"
 
 DEFAULT_RESULTS_DIR = Path(
-    "/Users/tasosvaf/repos/testRepos/experiment_results/QuixBugs_python_results"
+    "/Users/tasosvaf/repos/testRepos/experiment_results/QuixBugs_results"
 )
 
 # slug -> human readable display name. The slug is the folder name on disk.

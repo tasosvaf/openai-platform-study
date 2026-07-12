@@ -15,7 +15,7 @@ whose job is to **edit the buggy program until its test passes**.
 ## Layout
 
 ```
-python_test_experiments/
+QuixBugs_experiments/
 ├── README.md                 # this file
 ├── run_tests.py              # run a list of tests (see below)
 ├── conftest.py               # adds the --runslow pytest option
