@@ -62,5 +62,5 @@ for lvl in "${LEVELS[@]}"; do
 done
 
 echo ""
-echo "Done. Summary report(s): gold.assignment-*.json  |  Detailed logs: logs/run_evaluation/"
+echo "Done. Summary report(s): <model>.assignment-*.json  |  Detailed logs: logs/run_evaluation/"
 exit $rc

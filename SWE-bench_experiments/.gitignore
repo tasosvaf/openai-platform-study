@@ -1,8 +1,10 @@
 # Local virtual environment (recreate per machine)
 .venv/
 
-# Harness output
+# Harness output — SWE-bench writes <model>.assignment-<level>.json report
+# summaries here after a run. These are results/answers and must not be committed.
 logs/
+*.assignment-*.json
 gold.*.json
 *.log
 

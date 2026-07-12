@@ -41,9 +41,13 @@ from pathlib import Path
 HARNESS_DIR = Path(__file__).resolve().parent
 ASSIGN_DIR = HARNESS_DIR.parent  # the SWE-bench_experiments/ folder
 
-DEFAULT_RESULTS_DIR = Path(
-    "/Users/tasosvaf/repos/testRepos/experiment_results/SWE-bench_results"
-)
+# Base results folder shared by both benchmarks; each benchmark writes into its
+# own subfolder beneath it.
+EXPERIMENT_RESULTS_ROOT = Path("/Users/tasosvaf/repos/testRepos/experiment_results")
+DEFAULT_RESULTS_DIR = EXPERIMENT_RESULTS_ROOT / "SWE-bench_results"
+
+# Default model recorded on a run unless overridden with --model.
+DEFAULT_MODEL = "GPT 5.4-mini"
 
 # slug -> human readable display name. The slug is the folder name on disk.
 # Kept identical to the QuixBugs harness so results line up tool-for-tool.
@@ -485,7 +489,7 @@ def build_parser():
     ep.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR),
                     help="Where to export results (created if missing).")
     ep.add_argument("--label", default=None, help="Run label (default: timestamp).")
-    ep.add_argument("--model", default=None, help="Model name for the report.")
+    ep.add_argument("--model", default=DEFAULT_MODEL, help=f"Model name for the report (default: {DEFAULT_MODEL}).")
     ep.add_argument("--tokens-before", type=int, default=None, help="Session tokens before the run.")
     ep.add_argument("--tokens-after", type=int, default=None, help="Session tokens after the run.")
     ep.add_argument("--cost-usd", type=float, default=None, help="Reported cost in USD.")

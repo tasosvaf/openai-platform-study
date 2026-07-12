@@ -2,10 +2,16 @@
 
 ```text
 Before doing anything, ask me three things and wait for my answers:
-  1. Which tool are we testing? (one of: github_copilot_cli, vscode_copilot_cli,
-     cline, aider, openai_codex_cli, openai_codex_ui)
-  2. What is the model name?
+  1. Which tool are we testing? Reply with the NUMBER:
+       1) github_copilot_cli   — GitHub Copilot CLI
+       2) vscode_copilot_cli   — VS Code Copilot CLI
+       3) cline                — Cline
+       4) aider                — Aider
+       5) openai_codex_cli      — OpenAI Codex CLI
+       6) openai_codex_ui       — OpenAI Codex UI
+  2. What is the model name? (default: GPT 5.4-mini)
   3. What output folder should the results go in?
+     (default: /Users/tasosvaf/repos/testRepos/experiment_results/QuixBugs_results)
 
 Then read harness/prompt.md and follow it exactly: fix ONLY the single-line bug in
 each of python_programs/sieve.py, next_permutation.py and shortest_path_lengths.py,
