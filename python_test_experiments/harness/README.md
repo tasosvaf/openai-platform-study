@@ -14,10 +14,20 @@ Everything the harness produces goes to a **results folder** (created if it does
 not exist). Default:
 
 ```
-/Users/tasosvaf/repos/testRepos/experiment_results/QuixBugs_python_results
+/Users/tasosvaf/repos/testRepos/experiment_results/QuickBugs_results
 ```
 
 Override per command with `--results-dir <path>`.
+
+This QuixBugs run (the "first 3") is a **separate execution** from the SWE-bench
+run (the "second 3"), so each benchmark's token cost is tracked independently.
+They sit side by side under one parent:
+
+```
+experiment_results/
+├── QuickBugs_results/   <- this harness
+└── SWE-bench_results/   <- the SWE-bench setup (sibling experiment)
+```
 
 ---
 

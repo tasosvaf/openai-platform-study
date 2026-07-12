@@ -49,8 +49,13 @@ ROOT = HARNESS_DIR.parent
 PROGRAMS_DIR = ROOT / "python_programs"
 BASELINE_DIR = HARNESS_DIR / "baseline"
 
+# Results live under a shared parent that also holds the SWE-bench results from
+# the sibling experiment, so the two benchmarks are separate executions with
+# independently-tracked token cost:
+#   experiment_results/QuickBugs_results   <- this harness (the "first 3")
+#   experiment_results/SWE-bench_results   <- the SWE-bench setup (the "second 3")
 DEFAULT_RESULTS_DIR = Path(
-    "/Users/tasosvaf/repos/testRepos/experiment_results/QuixBugs_python_results"
+    "/Users/tasosvaf/repos/testRepos/experiment_results/QuickBugs_results"
 )
 
 # slug -> human readable display name. The slug is the folder name on disk.
