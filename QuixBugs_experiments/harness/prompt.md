@@ -14,7 +14,7 @@ same task and the results stay comparable.
 
 ```text
 You are fixing bugs in the QuixBugs Python benchmark. Work inside the repository
-folder `python_test_experiments/`.
+folder `QuixBugs_experiments/`.
 
 Each of these THREE files contains exactly ONE single-line defect:
 

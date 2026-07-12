@@ -49,9 +49,13 @@ ROOT = HARNESS_DIR.parent
 PROGRAMS_DIR = ROOT / "python_programs"
 BASELINE_DIR = HARNESS_DIR / "baseline"
 
-DEFAULT_RESULTS_DIR = Path(
-    "/Users/tasosvaf/repos/testRepos/experiment_results/QuixBugs_python_results"
-)
+# Base results folder shared by both benchmarks; each benchmark writes into its
+# own subfolder beneath it.
+EXPERIMENT_RESULTS_ROOT = Path("/Users/tasosvaf/repos/testRepos/experiment_results")
+DEFAULT_RESULTS_DIR = EXPERIMENT_RESULTS_ROOT / "QuixBugs_results"
+
+# Default model recorded on a run unless overridden with --model.
+DEFAULT_MODEL = "GPT 5.4-mini"
 
 # slug -> human readable display name. The slug is the folder name on disk.
 TOOLS = {
@@ -506,7 +510,7 @@ def build_parser():
     ep.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR),
                     help="Where to export results (created if missing).")
     ep.add_argument("--label", default=None, help="Run label (default: timestamp).")
-    ep.add_argument("--model", default=None, help="Model name, e.g. gpt-5.1 / claude-opus-4.5.")
+    ep.add_argument("--model", default=DEFAULT_MODEL, help=f"Model name (default: {DEFAULT_MODEL}).")
     ep.add_argument("--tokens-before", type=int, default=None, help="Session tokens before the run.")
     ep.add_argument("--tokens-after", type=int, default=None, help="Session tokens after the run.")
     ep.add_argument("--cost-usd", type=float, default=None, help="Reported cost in USD.")

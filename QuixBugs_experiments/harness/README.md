@@ -14,7 +14,7 @@ Everything the harness produces goes to a **results folder** (created if it does
 not exist). Default:
 
 ```
-/Users/tasosvaf/repos/testRepos/experiment_results/QuixBugs_python_results
+/Users/tasosvaf/repos/testRepos/experiment_results/QuixBugs_results
 ```
 
 Override per command with `--results-dir <path>`.
@@ -52,7 +52,7 @@ You fill in the **qualitative rubric** (`scorecard.md`) after inspecting the run
 ## One-time setup
 
 ```bash
-cd /Users/tasosvaf/repos/testRepos/openai-platform-study/python_test_experiments
+cd /Users/tasosvaf/repos/testRepos/openai-platform-study/QuixBugs_experiments
 pip install pytest pytest-timeout
 
 # Capture the pristine buggy baseline (used for diffs and reset). Do this ONCE,

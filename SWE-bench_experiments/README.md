@@ -5,10 +5,12 @@ difficulty (**easy → medium → hard**). Each one applies a patch to a real Gi
 inside a Docker container and runs that project's test suite to check whether the issue is
 resolved.
 
-The three patches shipped here are the **gold** (reference) patches, so a correct setup
-resolves all three. That makes this folder a portable, end-to-end **setup validator**: clone
-it onto any machine, follow the steps below, and confirm the whole harness works before you
-plug in your own model. See [Use your own model](#use-your-own-model) to swap them out.
+This folder is **answer-free**: the shipped `predictions/*.jsonl` contain an **empty**
+`model_patch` for each of the three instances, so agents can't peek at a reference fix. Your
+job (or an agent's) is to fill in each `model_patch` and then run the harness. The gold
+(reference) patches and any prior result reports are kept **outside** the repo, under
+`/Users/tasosvaf/repos/testRepos/experiment_results/SWE-bench_results/answers/`, purely for
+after-the-fact checking. See [Use your own model](#use-your-own-model).
 
 This folder is **self-contained** — you do *not* need to clone the SWE-bench source repo. The
 `swebench` PyPI package provides everything.
@@ -36,18 +38,20 @@ different Docker build environments. See [How difficulty was chosen](#how-diffic
 |------|-----------|
 | `README.md` | This file. |
 | `requirements.txt` | The single dependency (`swebench`). |
-| `predictions/easy.jsonl` | Prediction (gold patch) for the easy instance. |
-| `predictions/medium.jsonl` | Prediction (gold patch) for the medium instance. |
-| `predictions/hard.jsonl` | Prediction (gold patch) for the hard instance. |
+| `predictions/easy.jsonl` | Prediction slot for the easy instance (empty `model_patch`). |
+| `predictions/medium.jsonl` | Prediction slot for the medium instance (empty `model_patch`). |
+| `predictions/hard.jsonl` | Prediction slot for the hard instance (empty `model_patch`). |
+| `harness/` | Comparison harness: prompts + `swe_experiment_runner.py` that exports results. |
 | `run_experiment.ps1` | Runner for Windows (PowerShell). |
 | `run_experiment.sh` | Runner for macOS / Linux (bash). |
 | `run_all.sh` | macOS + Colima one-shot wrapper (starts Colima, sets `DOCKER_HOST`, runs levels). |
-| `.gitignore` | Ignores `.venv/`, `logs/`, and report `*.json`. |
+| `.gitignore` | Ignores `.venv/`, `logs/`, and report `*.assignment-*.json`. |
 
-Each `predictions/*.jsonl` file has one line in the standard SWE-bench format:
+Each `predictions/*.jsonl` file has one line in the standard SWE-bench format (shipped with an
+empty patch you fill in):
 
 ```json
-{"instance_id": "<repo>__<name>-<number>", "model_name_or_path": "gold", "model_patch": "<unified diff>"}
+{"instance_id": "<repo>__<name>-<number>", "model_name_or_path": "GPT 5.4-mini", "model_patch": ""}
 ```
 
 ---
@@ -70,7 +74,7 @@ Each `predictions/*.jsonl` file has one line in the standard SWE-bench format:
 
 ## Setup (once per machine)
 
-From inside this `assignment_experiments/` folder:
+From inside this `SWE-bench_experiments/` folder:
 
 ### Windows (PowerShell)
 
@@ -178,9 +182,9 @@ tradeoff (`instance` is fastest but can use ~2 TB across the full dataset).
 
 After a run you get:
 
-- **Summary report** in this folder: `gold.assignment-<level>.json` — counts of instances
-  submitted / completed / **resolved**. A correct setup shows `resolved = 1` per level.
-- **Detailed logs** under `logs/run_evaluation/assignment-<level>/gold/<instance_id>/`:
+- **Summary report** in this folder: `<model_name_or_path>.assignment-<level>.json` — counts
+  of instances submitted / completed / **resolved** (git-ignored; treated as a result).
+- **Detailed logs** under `logs/run_evaluation/assignment-<level>/<model_name_or_path>/<instance_id>/`:
   - `run_instance.log` — build & apply steps
   - `test_output.txt` — the actual test run
   - `report.json` — per-instance pass/fail
@@ -192,11 +196,15 @@ A run also prints a summary table to the console at the end.
 
 ## Use your own model
 
-To evaluate a real model/agent instead of the gold patch, edit the relevant
-`predictions/<level>.jsonl` and replace **`model_patch`** with your model's unified diff
-(keep the same `instance_id`; set `model_name_or_path` to your model's name). Then re-run.
-An empty/incorrect patch simply reports the instance as unresolved. You can also add more
-instances (one JSON object per line) and point `--predictions_path` at that file.
+The shipped predictions start with an **empty** `model_patch`. To evaluate a real model/agent,
+edit the relevant `predictions/<level>.jsonl` and set **`model_patch`** to your model's unified
+diff (keep the same `instance_id`; set `model_name_or_path` to your model's name, e.g.
+`GPT 5.4-mini`). Then run the harness. An empty/incorrect patch simply reports the instance as
+unresolved. You can also add more instances (one JSON object per line) and point
+`--predictions_path` at that file.
+
+The original gold patches (for checking your work) live outside the repo at
+`/Users/tasosvaf/repos/testRepos/experiment_results/SWE-bench_results/answers/predictions/`.
 
 ---
 

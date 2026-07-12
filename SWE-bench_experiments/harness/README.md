@@ -1,6 +1,6 @@
 # SWE-bench agent-comparison harness
 
-Companion to the QuixBugs harness (`../../python_test_experiments/harness/`). It
+Companion to the QuixBugs harness (`../../QuixBugs_experiments/harness/`). It
 exports the SWE-bench Lite assignment results — the **"second 3"** experiments
 (easy/medium/hard) — into a per-tool, comparable result set under:
 
@@ -8,12 +8,12 @@ exports the SWE-bench Lite assignment results — the **"second 3"** experiments
 /Users/tasosvaf/repos/testRepos/experiment_results/SWE-bench_results
 ```
 
-It sits beside the QuixBugs output (`QuickBugs_results`). The two benchmarks are
+It sits beside the QuixBugs output (`QuixBugs_results`). The two benchmarks are
 **separate executions**, so each one's token cost is tracked independently.
 
 ```
 experiment_results/
-├── QuickBugs_results/   <- the "first 3"  (python_test_experiments harness)
+├── QuixBugs_results/    <- the "first 3"  (QuixBugs_experiments harness)
 └── SWE-bench_results/   <- the "second 3" (this harness)
     ├── github_copilot_cli/
     ├── vscode_copilot_cli/
@@ -47,7 +47,7 @@ those results rather than running tests itself:
 ## The loop for each tool
 
 ```bash
-cd /Users/tasosvaf/repos/testRepos/openai-platform-study/assignment_experiments
+cd /Users/tasosvaf/repos/testRepos/openai-platform-study/SWE-bench_experiments
 
 # 1. Put the agent's patch for each level into predictions/<level>.jsonl
 #    (set model_patch + model_name_or_path). See ../README.md > "Use your own model".
