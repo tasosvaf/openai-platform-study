@@ -70,7 +70,7 @@ Each `predictions/*.jsonl` file has one line in the standard SWE-bench format:
 
 ## Setup (once per machine)
 
-From inside this `assignment_experiments/` folder:
+From inside this `SWE-bench_experiments/` folder:
 
 ### Windows (PowerShell)
 

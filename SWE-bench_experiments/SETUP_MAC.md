@@ -1,7 +1,7 @@
 # Environment setup — macOS
 
 Commands to set up and run the SWE-bench Lite experiments on a Mac.
-Run everything from inside this `assignment_experiments/` folder.
+Run everything from inside this `SWE-bench_experiments/` folder.
 
 ## 1. Prerequisites
 
