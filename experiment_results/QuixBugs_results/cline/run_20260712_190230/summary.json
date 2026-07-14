@@ -1,0 +1,49 @@
+{
+  "tool_slug": "cline",
+  "tool_name": "Cline",
+  "model": "GPT 5.4-mini",
+  "label": "20260712_190230",
+  "timestamp": "2026-07-12T19:02:31",
+  "scope": "default",
+  "total_programs": 3,
+  "fixed_correctly": 3,
+  "fix_rate": 1.0,
+  "programs_edited": 3,
+  "counts": {
+    "pass": 3,
+    "fail": 0,
+    "timeout": 0,
+    "error": 0
+  },
+  "tokens": {
+    "tokens_before": 0,
+    "tokens_after": 32705,
+    "tokens_used": 32705,
+    "cost_usd": 0.16,
+    "model": "GPT 5.4-mini"
+  },
+  "notes": null,
+  "per_program": {
+    "sieve": {
+      "status": "pass",
+      "difficulty": "easy",
+      "seconds": 0.11,
+      "changed": true,
+      "diff": "diffs/sieve.diff"
+    },
+    "next_permutation": {
+      "status": "pass",
+      "difficulty": "medium",
+      "seconds": 0.11,
+      "changed": true,
+      "diff": "diffs/next_permutation.diff"
+    },
+    "shortest_path_lengths": {
+      "status": "pass",
+      "difficulty": "hard",
+      "seconds": 0.11,
+      "changed": true,
+      "diff": "diffs/shortest_path_lengths.diff"
+    }
+  }
+}

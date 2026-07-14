@@ -1,0 +1,64 @@
+{
+  "benchmark": "SWE-bench Lite",
+  "tool_slug": "openai_codex_cli",
+  "tool_name": "OpenAI Codex CLI",
+  "model": "GPT 5.4-mini",
+  "swe_model_name": [
+    "GPT 5.4-mini"
+  ],
+  "label": "20260712_225824",
+  "timestamp": "2026-07-12T22:58:24",
+  "total_instances": 3,
+  "resolved": 0,
+  "resolve_rate": 0.0,
+  "counts": {
+    "pass": 0,
+    "fail": 1,
+    "empty": 0,
+    "error": 2,
+    "missing": 0
+  },
+  "tokens": {
+    "tokens_before": 0,
+    "tokens_after": 0,
+    "tokens_used": 0,
+    "cost_usd": 0.0,
+    "model": "GPT 5.4-mini"
+  },
+  "notes": null,
+  "per_instance": {
+    "matplotlib__matplotlib-23563": {
+      "level": "easy",
+      "repo": "matplotlib",
+      "swe_model_name": "GPT 5.4-mini",
+      "status": "error",
+      "resolved": false,
+      "fail_to_pass": null,
+      "pass_to_pass": null,
+      "diff": "diffs/matplotlib__matplotlib-23563.diff",
+      "test_log": null
+    },
+    "sympy__sympy-22005": {
+      "level": "medium",
+      "repo": "sympy",
+      "swe_model_name": "GPT 5.4-mini",
+      "status": "fail",
+      "resolved": false,
+      "fail_to_pass": "0/1",
+      "pass_to_pass": "2/2",
+      "diff": "diffs/sympy__sympy-22005.diff",
+      "test_log": "/Users/tasosvaf/repos/testRepos/openai-platform-study/SWE-bench_experiments/logs/run_evaluation/assignment-medium/GPT 5.4-mini/sympy__sympy-22005/test_output.txt"
+    },
+    "django__django-11019": {
+      "level": "hard",
+      "repo": "django",
+      "swe_model_name": "GPT 5.4-mini",
+      "status": "error",
+      "resolved": false,
+      "fail_to_pass": null,
+      "pass_to_pass": null,
+      "diff": "diffs/django__django-11019.diff",
+      "test_log": null
+    }
+  }
+}

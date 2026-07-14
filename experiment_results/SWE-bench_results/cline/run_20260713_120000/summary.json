@@ -1,0 +1,15 @@
+{
+  "tool": "cline",
+  "model": "gpt-5.4-mini",
+  "total_instances": 300,
+  "submitted_instances": 3,
+  "completed_instances": 3,
+  "resolved_instances": 3,
+  "unresolved_instances": 0,
+  "empty_patch_instances": 0,
+  "error_instances": 0,
+  "tokens_before": 0,
+  "tokens_after": 39557,
+  "tokens_used": 39557,
+  "cost_usd": 0.23
+}

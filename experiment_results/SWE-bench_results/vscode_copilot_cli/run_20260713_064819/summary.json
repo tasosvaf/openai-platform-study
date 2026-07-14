@@ -1,0 +1,64 @@
+{
+  "benchmark": "SWE-bench Lite",
+  "tool_slug": "vscode_copilot_cli",
+  "tool_name": "VS Code Copilot CLI",
+  "model": "gpt5.4-min",
+  "swe_model_name": [
+    "GPT 5.4-mini"
+  ],
+  "label": "20260713_064819",
+  "timestamp": "2026-07-13T06:48:19",
+  "total_instances": 3,
+  "resolved": 3,
+  "resolve_rate": 1.0,
+  "counts": {
+    "pass": 3,
+    "fail": 0,
+    "empty": 0,
+    "error": 0,
+    "missing": 0
+  },
+  "tokens": {
+    "tokens_before": 0,
+    "tokens_after": 0,
+    "tokens_used": 0,
+    "cost_usd": 0.38,
+    "model": "gpt5.4-min"
+  },
+  "notes": null,
+  "per_instance": {
+    "matplotlib__matplotlib-23563": {
+      "level": "easy",
+      "repo": "matplotlib",
+      "swe_model_name": "GPT 5.4-mini",
+      "status": "pass",
+      "resolved": true,
+      "fail_to_pass": "1/1",
+      "pass_to_pass": "136/136",
+      "diff": "diffs/matplotlib__matplotlib-23563.diff",
+      "test_log": "/Users/tasosvaf/repos/testRepos/openai-platform-study/SWE-bench_experiments/logs/run_evaluation/assignment-easy/GPT 5.4-mini/matplotlib__matplotlib-23563/test_output.txt"
+    },
+    "sympy__sympy-22005": {
+      "level": "medium",
+      "repo": "sympy",
+      "swe_model_name": "GPT 5.4-mini",
+      "status": "pass",
+      "resolved": true,
+      "fail_to_pass": "1/1",
+      "pass_to_pass": "2/2",
+      "diff": "diffs/sympy__sympy-22005.diff",
+      "test_log": "/Users/tasosvaf/repos/testRepos/openai-platform-study/SWE-bench_experiments/logs/run_evaluation/assignment-medium/GPT 5.4-mini/sympy__sympy-22005/test_output.txt"
+    },
+    "django__django-11019": {
+      "level": "hard",
+      "repo": "django",
+      "swe_model_name": "GPT 5.4-mini",
+      "status": "pass",
+      "resolved": true,
+      "fail_to_pass": "16/16",
+      "pass_to_pass": "58/58",
+      "diff": "diffs/django__django-11019.diff",
+      "test_log": "/Users/tasosvaf/repos/testRepos/openai-platform-study/SWE-bench_experiments/logs/run_evaluation/assignment-hard/GPT 5.4-mini/django__django-11019/test_output.txt"
+    }
+  }
+}

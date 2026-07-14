@@ -1,0 +1,49 @@
+{
+  "tool_slug": "openai_codex_cli",
+  "tool_name": "OpenAI Codex CLI",
+  "model": "gpt-5.4-mini",
+  "label": "20260712_185152",
+  "timestamp": "2026-07-12T18:51:53",
+  "scope": "default",
+  "total_programs": 3,
+  "fixed_correctly": 3,
+  "fix_rate": 1.0,
+  "programs_edited": 3,
+  "counts": {
+    "pass": 3,
+    "fail": 0,
+    "timeout": 0,
+    "error": 0
+  },
+  "tokens": {
+    "tokens_before": 0,
+    "tokens_after": 27500,
+    "tokens_used": 27500,
+    "cost_usd": 0.0,
+    "model": "gpt-5.4-mini"
+  },
+  "notes": null,
+  "per_program": {
+    "sieve": {
+      "status": "pass",
+      "difficulty": "easy",
+      "seconds": 0.14,
+      "changed": true,
+      "diff": "diffs/sieve.diff"
+    },
+    "next_permutation": {
+      "status": "pass",
+      "difficulty": "medium",
+      "seconds": 0.12,
+      "changed": true,
+      "diff": "diffs/next_permutation.diff"
+    },
+    "shortest_path_lengths": {
+      "status": "pass",
+      "difficulty": "hard",
+      "seconds": 0.11,
+      "changed": true,
+      "diff": "diffs/shortest_path_lengths.diff"
+    }
+  }
+}
